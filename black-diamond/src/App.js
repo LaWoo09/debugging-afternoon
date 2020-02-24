@@ -12,6 +12,8 @@ class App extends Component {
       cart: [],
       showCart: false
     };
+    this.addToCart = this.addToCart.bind(this)
+    this.navigate = this.navigate.bind(this)
   }
   componentDidMount() {
     axios
@@ -35,10 +37,14 @@ class App extends Component {
     });
   }
   navigate(location) {
-    if (location === "cart") {
-      this.state.showCart = true;
+    if(location === "cart") {
+      this.setState({
+        showCart: true,
+      })
     } else {
-      this.state.showCart = false;
+      this.setState({
+        showCart: false
+      })
     }
   }
   render() {

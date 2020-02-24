@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios";
 import StoreFront from "./Components/StoreFront/StoreFront";
 import ShoppingCart from "./Components/ShoppingCart/ShoppingCart";
 import NavBar from "./Components/NavBar/NavBar";
@@ -48,15 +49,16 @@ class App extends Component {
     }
   }
   render() {
+    const { cart } = this.state;
     const { products, showCart } = this.state;
     return (
       <div className="App">
         <NavBar navigate={this.navigate} />
         <div className="main-container">
           {showCart ? (
-            <ShoppingCart cart={cart} />
+            <ShoppingCart removeFromCart={this.removeFromCart} cart={cart} />
           ) : (
-            <StoreFront products={products} />
+            <StoreFront addToCart={this.addToCart} products={products} />
           )}
         </div>
       </div>
